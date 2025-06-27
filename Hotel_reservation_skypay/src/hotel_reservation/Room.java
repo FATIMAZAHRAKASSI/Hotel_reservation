@@ -18,7 +18,7 @@ public int getroomNumber()
 {
 	return roomNumber;
 }
-//getters and setters
+//getters
 public RoomType getType() {
 	return type;
 }
@@ -26,6 +26,17 @@ public RoomType getType() {
 public int getPrice() {
 	return price;
 }
+
+
+//setters
+public void setType(RoomType type) {
+	this.type = type;
+}
+
+public void setPrice(int price) {
+	this.price = price;
+}
+
 
 //override equals to compare room objects
 @Override
@@ -37,15 +48,12 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Room other = (Room) obj;
-	return roomNumber == other.roomNumber;
+	return  roomNumber == other.roomNumber;
 }
 
 @Override
 public int hashCode() {
 	return Objects.hash(price, roomNumber, type);
 }
-
-
-
 
 }

@@ -5,14 +5,16 @@ private int userID;
 private int roomID;
 private Date checkIn;
 private Date checkOut;
+private int PriceBooking;
 
 //constructor
-public Booking( int userID, int roomID, Date checkIn, Date checkOut) {
+public Booking( int userID, int roomID, Date checkIn, Date checkOut,int PriceBooking) {
 	super();
 	this.userID = userID;
 	this.roomID = roomID;
 	this.checkIn = checkIn;
 	this.checkOut = checkOut;
+	this.PriceBooking=PriceBooking;
 	
 }
 
@@ -30,6 +32,14 @@ public Date getCheckIn() {
 
 public Date getCheckOut() {
 	return checkOut;
+}
+
+public int getPriceBooking() {
+	return PriceBooking;
+}
+
+public void setPriceBooking(int priceBooking) {
+	PriceBooking = priceBooking;
 }
 
 }

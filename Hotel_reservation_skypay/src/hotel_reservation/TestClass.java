@@ -15,6 +15,10 @@ public class TestClass {
 		serviceHotel.setRoom(3, RoomType.SUITE, 1000);
 
 		
+		//displaying rooms
+		System.out.println("DISPLAY ROOMS BEFORE BOOKING");
+		serviceHotel.printAll();
+		
 		//creating 2 users
 		serviceHotel.setUser(1, 5000);
 		serviceHotel.setUser(2, 10000);

@@ -17,7 +17,15 @@ void setRoom(int roomNumber, RoomType roomType, int roomPricePerNight) {
 	if(!rooms.contains(r))
 	{rooms.add(0,r);}
 	else {
-		System.out.println("You can't create a new room because a room with this number already exists!");
+		for(Room ro :rooms)
+		{
+			if(ro.getroomNumber()==roomNumber)
+			{
+				ro.setPrice(roomPricePerNight);
+				ro.setType(roomType);
+				System.out.println("Room nbr: "+roomNumber+" is now updated");
+			}
+		}
 	}
 }
 
@@ -53,11 +61,15 @@ void printAll() {
 	//booking data
 	System.out.println("ALL BOOKINGS FROM LAST TO OLDEST CREATED::");
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");//to display a comprehensive date
+	if(booking.isEmpty())
+	{
+		System.out.println("NO BOOKING FOR THE MOMENT!");
+	}
 	for(Booking b:booking)
 	{
 		
 	 
-		System.out.println("Booking of room: "+b.getRoomID()+" by user: "+b.getUserID()+" starts from: "+formatter.format(b.getCheckIn())+" and ends at: "+formatter.format(b.getCheckOut()));
+		System.out.println("Booking of room: "+b.getRoomID()+" by user: "+b.getUserID()+" starts from: "+formatter.format(b.getCheckIn())+" and ends at: "+formatter.format(b.getCheckOut())+" With the amount: "+b.getPriceBooking());
 	}
 }
 
@@ -124,7 +136,7 @@ void bookRoom(int userId, int roomNumber, Date checkIn, Date checkOut) {
  	//if it gets to this point the code it means the user can book the room
  	//deduct the balance
  	user.deductBalance(amount);
- 	booking.add(0,new Booking(userId,roomNumber,checkIn,checkOut));
+ 	booking.add(0,new Booking(userId,roomNumber,checkIn,checkOut,amount));
  	System.out.println("The booking of the room :"+roomNumber+" By user: "+userId+ " is successfull!");
 }
 
